@@ -13,16 +13,23 @@ namespace MvvmPresentation.Data.EF.Model
             Sum = sum;
             Customer = customer;
         }
+
+        //For EF
+        private OrderEntity()
+        {
+                
+        }
+
         [Key]
-        public int Id { get; }
+        public int Id { get; private set;  }
 
         [Column("Created")]
-        public DateTime Created { get; }
+        public DateTime Created { get; private set; }
 
         [Column("Sum")]
-        public decimal Sum { get; }
+        public decimal Sum { get; private set; }
 
         [Column("CustomerId")]
-        public CustomerEntity Customer { get; }
+        public CustomerEntity Customer { get; private set; } = new(0, string.Empty);
     }
 }

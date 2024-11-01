@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CustomersJson" xml:space="preserve">
+    <value>[{"Id":1,"FullName":"Прокопенко Иван"},{"Id":2,"FullName":"Харченко Мария "},{"Id":3,"FullName":"Викторовна Полина"},{"Id":4,"FullName":"Алямовский Михаил "},{"Id":5,"FullName":"Борисова Дарья "},{"Id":6,"FullName":"Останин Сергей "},{"Id":7,"FullName":"Марина Лебедева"},{"Id":8,"FullName":"Краснов Валерий"},{"Id":9,"FullName":"Пётр Иванов"},{"Id":10,"FullName":"Акимов Юрий"}]</value>
+  </data>
+  <data name="OrdersJson" xml:space="preserve">
+    <value>[{"Id":98511361,"Sum":1149.0000,"Created":"2024-10-29T14:21:53","CustomerId":9},{"Id":98511408,"Sum":1149.0000,"Created":"2024-10-29T14:24:48","CustomerId":9},{"Id":98511714,"Sum":566.0000,"Created":"2024-10-29T14:45:24","CustomerId":9},{"Id":98511779,"Sum":571.0000,"Created":"2024-10-29T14:49:25","CustomerId":9},{"Id":98512003,"Sum":1.0000,"Created":"2024-10-29T15:06:35","CustomerId":9},{"Id":98512059,"Sum":6365.0000,"Created":"2024-10-29T15:09:33","CustomerId":8},{"Id":98512133,"Sum":14617.0000,"Created":"2024-10-29T15:13:36","CustomerId":8},{"Id":98512139,"Sum":13020.0000,"Created":"2024-10-29T15:14:23","CustomerId":8},{"Id":98512153,"Sum":9048.0000,"Created":"2024-10-29T15:15:07","CustomerId":8},{"Id":98512163,"Sum":6924.0000,"Created":"2024-10-29T15:16:13","CustomerId":8},{"Id":98512324,"Sum":5207.0000,"Created":"2024-10-29T15:28:11","CustomerId":8},{"Id":98512352,"Sum":959.0000,"Created":"2024-10-29T15:30:18","CustomerId":9},{"Id":98512361,"Sum":12416.0000,"Created":"2024-10-29T15:30:58","CustomerId":8},{"Id":98512367,"Sum":855.0000,"Created":"2024-10-29T15:31:24","CustomerId":9},{"Id":98512369,"Sum":11999.0000,"Created":"2024-10-29T15:31:42","CustomerId":8},{"Id":98512379,"Sum":544.0000,"Created":"2024-10-29T15:32:33","CustomerId":9},{"Id":98512389,"Sum":539.0000,"Created":"2024-10-29T15:33:12","CustomerId":9},{"Id":98512402,"Sum":8939.0000,"Created":"2024-10-29T15:33:55","CustomerId":8},{"Id":98512404,"Sum":545.0000,"Created":"2024-10-29T15:34:00","CustomerId":9},{"Id":98512425,"Sum":10080.0000,"Created":"2024-10-29T15:35:37","CustomerId":8},{"Id":98512592,"Sum":721.0000,"Created":"2024-10-29T15:48:33","CustomerId":9},{"Id":98512603,"Sum":721.0000,"Created":"2024-10-29T15:49:53","CustomerId":9},{"Id":98512613,"Sum":685.0000,"Created":"2024-10-29T15:50:44","CustomerId":9},{"Id":98512622,"Sum":685.0000,"Created":"2024-10-29T15:51:39","CustomerId":9},{"Id":98512769,"Sum":525.0000,"Created":"2024-10-29T16:04:04","CustomerId":9},{"Id":98512881,"Sum":3248.0000,"Created":"2024-10-29T16:11:04","CustomerId":9},{"Id":98512907,"Sum":1624.0000,"Created":"2024-10-29T16:12:23","CustomerId":9},{"Id":98513092,"Sum":685.0000,"Created":"2024-10-29T16:24:31","CustomerId":9},{"Id":98513106,"Sum":685.0000,"Created":"2024-10-29T16:25:21","CustomerId":9},{"Id":98513148,"Sum":823.0000,"Created":"2024-10-29T16:27:29","CustomerId":9},{"Id":98513179,"Sum":823.0000,"Created":"2024-10-29T16:28:52","CustomerId":9},{"Id":98513205,"Sum":1797.0000,"Created":"2024-10-29T16:30:13","CustomerId":9},{"Id":98513314,"Sum":1003.0000,"Created":"2024-10-29T16:35:00","CustomerId":9},{"Id":98513831,"Sum":599.0000,"Created":"2024-10-29T17:02:30","CustomerId":9},{"Id":98521310,"Sum":1210.0000,"Created":"2024-10-30T06:30:28","CustomerId":7},{"Id":98521346,"Sum":492.0000,"Created":"2024-10-30T06:37:24","CustomerId":7},{"Id":98521384,"Sum":311.0000,"Created":"2024-10-30T06:44:32","CustomerId":7},{"Id":98521424,"Sum":311.0000,"Created":"2024-10-30T06:51:46","CustomerId":7},{"Id":98521455,"Sum":332.0000,"Created":"2024-10-30T06:58:28","CustomerId":7},{"Id":98521474,"Sum":332.0000,"Created":"2024-10-30T07:01:42","CustomerId":7},{"Id":98521515,"Sum":311.0000,"Created":"2024-10-30T07:07:49","CustomerId":7},{"Id":98521590,"Sum":179.0000,"Created":"2024-10-30T07:19:05","CustomerId":7},{"Id":98521670,"Sum":174.0000,"Created":"2024-10-30T07:28:15","CustomerId":7},{"Id":98521710,"Sum":201.0000,"Created":"2024-10-30T07:33:23","CustomerId":7},{"Id":98521748,"Sum":201.0000,"Created":"2024-10-30T07:37:50","CustomerId":7},{"Id":98521796,"Sum":229.0000,"Created":"2024-10-30T07:46:49","CustomerId":7},{"Id":98521998,"Sum":208.0000,"Created":"2024-10-30T08:17:11","CustomerId":7},{"Id":98522311,"Sum":285.0000,"Created":"2024-10-30T08:58:50","CustomerId":7},{"Id":98522491,"Sum":299.0000,"Created":"2024-10-30T09:15:35","CustomerId":7},{"Id":98529051,"Sum":303.0000,"Created":"2024-10-30T14:19:37","CustomerId":7},{"Id":98539574,"Sum":179.0000,"Created":"2024-10-31T07:32:37","CustomerId":7},{"Id":98540055,"Sum":86.0000,"Created":"2024-10-31T08:48:15","CustomerId":7},{"Id":98540227,"Sum":86.0000,"Created":"2024-10-31T09:15:23","CustomerId":7},{"Id":98541584,"Sum":1315.0000,"Created":"2024-10-31T11:44:06","CustomerId":3},{"Id":98541637,"Sum":5490.0000,"Created":"2024-10-31T11:46:27","CustomerId":3},{"Id":98541645,"Sum":1315.0000,"Created":"2024-10-31T11:46:53","CustomerId":3},{"Id":98541655,"Sum":496.0000,"Created":"2024-10-31T11:47:19","CustomerId":3},{"Id":98541669,"Sum":643.0000,"Created":"2024-10-31T11:47:48","CustomerId":3},{"Id":98541681,"Sum":643.0000,"Created":"2024-10-31T11:48:11","CustomerId":3},{"Id":98541697,"Sum":1174.0000,"Created":"2024-10-31T11:49:02","CustomerId":3},{"Id":98541713,"Sum":419.0000,"Created":"2024-10-31T11:49:56","CustomerId":3},{"Id":98541749,"Sum":1825.0000,"Created":"2024-10-31T11:51:48","CustomerId":3},{"Id":98541754,"Sum":1168.0000,"Created":"2024-10-31T11:52:16","CustomerId":3},{"Id":98541760,"Sum":1021.0000,"Created":"2024-10-31T11:52:36","CustomerId":3},{"Id":98541788,"Sum":5217.0000,"Created":"2024-10-31T11:54:24","CustomerId":3},{"Id":98541815,"Sum":1069.0000,"Created":"2024-10-31T11:56:15","CustomerId":3},{"Id":98541822,"Sum":1385.0000,"Created":"2024-10-31T11:56:56","CustomerId":3},{"Id":98541829,"Sum":1308.0000,"Created":"2024-10-31T11:57:33","CustomerId":3},{"Id":98541847,"Sum":608.0000,"Created":"2024-10-31T11:59:11","CustomerId":3},{"Id":98544080,"Sum":419.0000,"Created":"2024-10-31T14:20:36","CustomerId":3},{"Id":98545156,"Sum":1454.0000,"Created":"2024-10-31T15:35:21","CustomerId":3},{"Id":98545305,"Sum":1462.0000,"Created":"2024-10-31T15:45:42","CustomerId":3},{"Id":98545388,"Sum":1454.0000,"Created":"2024-10-31T15:52:19","CustomerId":3},{"Id":98545539,"Sum":20.0000,"Created":"2024-10-31T16:07:55","CustomerId":3},{"Id":98545661,"Sum":79.0000,"Created":"2024-10-31T16:20:52","CustomerId":2},{"Id":98545677,"Sum":1049.0000,"Created":"2024-10-31T16:22:10","CustomerId":2},{"Id":98545688,"Sum":229.0000,"Created":"2024-10-31T16:23:10","CustomerId":2},{"Id":98545693,"Sum":209.0000,"Created":"2024-10-31T16:23:37","CustomerId":2},{"Id":98545703,"Sum":299.0000,"Created":"2024-10-31T16:24:10","CustomerId":2},{"Id":98545705,"Sum":249.0000,"Created":"2024-10-31T16:24:35","CustomerId":2},{"Id":98545713,"Sum":229.0000,"Created":"2024-10-31T16:25:21","CustomerId":2},{"Id":98545726,"Sum":229.0000,"Created":"2024-10-31T16:26:04","CustomerId":2},{"Id":98545731,"Sum":269.0000,"Created":"2024-10-31T16:26:27","CustomerId":2},{"Id":98548523,"Sum":10607.0000,"Created":"2024-10-31T20:22:53","CustomerId":1},{"Id":98548548,"Sum":11576.0000,"Created":"2024-10-31T20:25:49","CustomerId":1},{"Id":98548574,"Sum":15004.0000,"Created":"2024-10-31T20:28:38","CustomerId":1},{"Id":98548591,"Sum":12860.0000,"Created":"2024-10-31T20:30:28","CustomerId":1},{"Id":98549026,"Sum":13210.0000,"Created":"2024-10-31T21:15:16","CustomerId":1},{"Id":98549058,"Sum":9634.0000,"Created":"2024-10-31T21:19:25","CustomerId":1},{"Id":98549076,"Sum":13414.0000,"Created":"2024-10-31T21:21:44","CustomerId":1},{"Id":98549095,"Sum":14027.0000,"Created":"2024-10-31T21:23:53","CustomerId":1},{"Id":98554850,"Sum":1439.0000,"Created":"2024-11-01T12:46:55","CustomerId":3},{"Id":98554903,"Sum":1439.0000,"Created":"2024-11-01T12:48:45","CustomerId":3},{"Id":98555759,"Sum":1586.0000,"Created":"2024-11-01T13:24:23","CustomerId":3},{"Id":98557284,"Sum":538.0000,"Created":"2024-11-01T14:31:16","CustomerId":3},{"Id":98557799,"Sum":389.0000,"Created":"2024-11-01T14:55:15","CustomerId":3},{"Id":98559940,"Sum":419.0000,"Created":"2024-11-01T15:57:25","CustomerId":3},{"Id":98561609,"Sum":4186.0000,"Created":"2024-11-01T16:59:28","CustomerId":3},{"Id":98561657,"Sum":1385.0000,"Created":"2024-11-01T17:01:18","CustomerId":3},{"Id":98561665,"Sum":1308.0000,"Created":"2024-11-01T17:01:40","CustomerId":3}]</value>
+  </data>
+</root>

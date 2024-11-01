@@ -12,11 +12,17 @@ namespace MvvmPresentation.Data.EF.Model
             FullName = fullName;
         }
 
+        //For EF
+        private CustomerEntity()
+        {
+                
+        }
+
         [Key]
-        public int Id { get; }
+        public int Id { get; private set; }
 
         [Column("Name")]
-        public string FullName { get; }
+        public string FullName { get; private set; } = string.Empty;
 
         public virtual IList<OrderEntity> Orders { get; private set; } = [];
     }
