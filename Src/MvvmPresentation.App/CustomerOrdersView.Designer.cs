@@ -63,7 +63,7 @@
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -113,7 +113,7 @@
             gridControl1.Location = new Point(3, 63);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(794, 324);
+            gridControl1.Size = new Size(794, 318);
             gridControl1.TabIndex = 0;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -128,15 +128,16 @@
             // 
             stackPanel2.Controls.Add(simpleButton2);
             stackPanel2.Dock = DockStyle.Fill;
-            stackPanel2.Location = new Point(3, 393);
+            stackPanel2.Location = new Point(3, 387);
             stackPanel2.Name = "stackPanel2";
-            stackPanel2.Padding = new Padding(10);
-            stackPanel2.Size = new Size(794, 54);
+            stackPanel2.Padding = new Padding(3);
+            stackPanel2.Size = new Size(794, 60);
             stackPanel2.TabIndex = 2;
+            stackPanel2.Visible = false;
             // 
             // simpleButton2
             // 
-            simpleButton2.Location = new Point(13, 15);
+            simpleButton2.Location = new Point(6, 18);
             simpleButton2.Name = "simpleButton2";
             simpleButton2.Size = new Size(75, 23);
             simpleButton2.TabIndex = 0;

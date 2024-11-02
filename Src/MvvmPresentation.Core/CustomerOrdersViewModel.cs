@@ -69,7 +69,7 @@ namespace MvvmPresentation.Core
                 _newCustomerList.AddRange(_task.Result);
                 Customers = _newCustomerList;
 
-                IsBusy = false;
+                //IsBusy = false;
                 SelectedCustomer = _allCust;
                 _dataLoadingTask = null;                
             }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -91,12 +91,12 @@ namespace MvvmPresentation.Core
                     IsBusy = false;
                     return;
                 }
-                IsBusy = false;
+                
                 OrderList.Clear();
-
                 task.Result.ToList().ForEach(order => OrderList.Add(order));
                 CurrentOrder = OrderList.FirstOrDefault();
                 _dataLoadingTask = null;
+                IsBusy = false;
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
