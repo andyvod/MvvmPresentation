@@ -1,4 +1,5 @@
-﻿using DevExpress.Mvvm.POCO;
+﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.POCO;
 using MvvmPresentation.Core.Services;
 using System.Collections.ObjectModel;
 
@@ -6,6 +7,9 @@ namespace MvvmPresentation.Core
 {
     public class CustomerOrdersViewModel
     {
+        //Все ок. DevExpress MVVM сам это разруливает
+        protected virtual IMessageBoxService _messageBoxService => throw new NotImplementedException();
+
         private readonly IOrderQueries _orderQueries;
 
         private Task? _dataLoadingTask;
@@ -52,6 +56,13 @@ namespace MvvmPresentation.Core
             _dataLoadingTask = _task;
 
             _task.ContinueWith(task => {
+                if (task.IsFaulted) { 
+                    var ex = task.Exception!.InnerExceptions.First();
+                    _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
+                    _dataLoadingTask = null;
+                    IsBusy = false;
+                    return;
+                }
                 CustomerNameViewModel _allCust = new(0, "Все");
                 List<CustomerNameViewModel> _newCustomerList = [_allCust];
 
@@ -61,7 +72,7 @@ namespace MvvmPresentation.Core
                 IsBusy = false;
                 SelectedCustomer = _allCust;
                 _dataLoadingTask = null;                
-            });
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void _loadOrdersForCustomer(int customerId = default)
@@ -72,13 +83,21 @@ namespace MvvmPresentation.Core
             _dataLoadingTask = _task;
 
             _task.ContinueWith(task => {
+                if (task.IsFaulted)
+                {
+                    var ex = task.Exception!.InnerExceptions.First();
+                    _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
+                    _dataLoadingTask = null;
+                    IsBusy = false;
+                    return;
+                }
                 IsBusy = false;
                 OrderList.Clear();
 
                 task.Result.ToList().ForEach(order => OrderList.Add(order));
                 CurrentOrder = OrderList.FirstOrDefault();
                 _dataLoadingTask = null;
-            });
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         protected void OnSelectedCustomerChanged() {
@@ -86,7 +105,7 @@ namespace MvvmPresentation.Core
                 return;
             }
 
-            _loadOrdersForCustomer();
+            _loadOrdersForCustomer(SelectedCustomer.Id);
         }
     }
 }

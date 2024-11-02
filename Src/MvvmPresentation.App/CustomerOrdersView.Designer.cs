@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerOrdersView));
             tableLayoutPanel1 = new TableLayoutPanel();
             stackPanel1 = new DevExpress.Utils.Layout.StackPanel();
             label1 = new Label();
             comboBox1 = new ComboBox();
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             gridControl1 = new DevExpress.XtraGrid.GridControl();
             gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             stackPanel2 = new DevExpress.Utils.Layout.StackPanel();
             simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(components);
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)stackPanel1).BeginInit();
             stackPanel1.SuspendLayout();
@@ -45,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)stackPanel2).BeginInit();
             stackPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)mvvmContext1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -88,10 +91,21 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(91, 15);
+            comboBox1.Location = new Point(91, 16);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(210, 21);
             comboBox1.TabIndex = 1;
+            // 
+            // simpleButton1
+            // 
+            simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            simpleButton1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("simpleButton1.ImageOptions.SvgImage");
+            simpleButton1.Location = new Point(324, 11);
+            simpleButton1.Margin = new Padding(20, 3, 3, 3);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new Size(32, 32);
+            simpleButton1.TabIndex = 2;
+            simpleButton1.Text = "simpleButton1";
             // 
             // gridControl1
             // 
@@ -109,17 +123,6 @@
             gridView1.Name = "gridView1";
             gridView1.OptionsView.ShowFooter = true;
             gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // simpleButton1
-            // 
-            simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            simpleButton1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("simpleButton1.ImageOptions.SvgImage");
-            simpleButton1.Location = new Point(324, 11);
-            simpleButton1.Margin = new Padding(20, 3, 3, 3);
-            simpleButton1.Name = "simpleButton1";
-            simpleButton1.Size = new Size(32, 32);
-            simpleButton1.TabIndex = 2;
-            simpleButton1.Text = "simpleButton1";
             // 
             // stackPanel2
             // 
@@ -139,6 +142,10 @@
             simpleButton2.TabIndex = 0;
             simpleButton2.Text = "Добавить";
             // 
+            // mvvmContext1
+            // 
+            mvvmContext1.ContainerControl = this;
+            // 
             // CustomerOrdersView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -155,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)stackPanel2).EndInit();
             stackPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)mvvmContext1).EndInit();
             ResumeLayout(false);
         }
 
@@ -169,5 +177,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.Utils.Layout.StackPanel stackPanel2;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.Utils.MVVM.MVVMContext mvvmContext1;
     }
 }
