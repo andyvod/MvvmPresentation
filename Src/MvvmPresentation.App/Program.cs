@@ -25,6 +25,9 @@ namespace MvvmPresentation.App
             Application.Run(new CustomerOrdersView());
         }
 
+        /// <summary>
+        /// Первичная инициализация данных для приложения. 
+        /// </summary>
         private static async Task _initDataBaseIfNeed()
         {
             var initializer = _rootServiceProvider!.GetRequiredService<DataInitializer>();
@@ -32,6 +35,9 @@ namespace MvvmPresentation.App
             await initializer.InitDataIfNeed(jsonData);
         }
 
+        /// <summary>
+        /// Регистрация сервисов для DependencyInjection
+        /// </summary>
         private static void _buildServiceProvider()
         {
             ServiceCollection services = new();
@@ -43,9 +49,11 @@ namespace MvvmPresentation.App
             _rootServiceProvider = services.BuildServiceProvider();
         }
 
+        /// <summary>
+        /// Поддержка DependencyInjection в моделях представления
+        /// </summary>
         private static void _addMVVMSupport()
         {
-            //DI for MVVM
             //See: https://docs.devexpress.com/WindowsForms/119492/build-an-application/winforms-mvvm/concepts/viewmodel-management
             MVVMContextCompositionRoot.ViewModelCreate += (s, e) =>
             {

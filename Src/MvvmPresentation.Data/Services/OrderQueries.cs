@@ -17,6 +17,7 @@ namespace MvvmPresentation.Data.Services
 
         public async Task<IEnumerable<CustomerNameViewModel>> GetCustomers()
         {
+            await Task.Delay(TimeSpan.FromSeconds(1));
             using var scope = _scopeFactory.CreateScope();
             var _dbContext = scope.ServiceProvider.GetRequiredService<OrdersDbContext>();
 
@@ -31,6 +32,7 @@ namespace MvvmPresentation.Data.Services
 
         public async Task<IEnumerable<CustomerOrderItemViewModel>> GetOrders(int customerId)
         {
+            await Task.Delay(TimeSpan.FromSeconds(1));
             using var scope = _scopeFactory.CreateScope();
             var _dbContext = scope.ServiceProvider.GetRequiredService<OrdersDbContext>();
 
