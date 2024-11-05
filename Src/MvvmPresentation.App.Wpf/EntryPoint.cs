@@ -1,5 +1,9 @@
+using DevExpress.Dialogs.Core.View;
+using DevExpress.Mvvm.POCO;
 using DevExpress.Utils.MVVM;
 using Microsoft.Extensions.DependencyInjection;
+using MvvmPresentation.App.Wpf;
+using MvvmPresentation.Core;
 using MvvmPresentation.Core.Services;
 using MvvmPresentation.Data.Data;
 using MvvmPresentation.Data.Services;
@@ -14,14 +18,32 @@ namespace CSharp
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
+        //public static void Main()
+        //{
+        //    _buildServiceProvider();
+        //    _initDataBaseIfNeed();
+        //    _addMVVMSupport();
+        //    var application = new System.Windows.Application();
+        //    application.Run(new MvvmPresentation.App.Wpf.MainWindow());
+        //}
+
         public static void Main()
         {
             _buildServiceProvider();
             _initDataBaseIfNeed();
             _addMVVMSupport();
+
+
+            IOrderQueries orderQueries = _rootServiceProvider.GetService<IOrderQueries>();
+            CustomerOrdersViewModel viewModel = CustomerOrdersViewModel.Create(orderQueries);
+            //viewModel.RefreshData();
+            MainWindow mainWindow = new MainWindow(viewModel);
+
+
             var application = new System.Windows.Application();
-            application.Run(new MvvmPresentation.App.Wpf.MainWindow());
+            application.Run(mainWindow);
         }
+
 
         /// <summary>
         /// ѕервична€ инициализаци€ данных дл€ приложени€. 

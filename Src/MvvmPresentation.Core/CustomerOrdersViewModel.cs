@@ -1,10 +1,13 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Mvvm.POCO;
 using MvvmPresentation.Core.Services;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace MvvmPresentation.Core
 {
+    [POCOViewModel()]
     public class CustomerOrdersViewModel
     {
         //Все ок. DevExpress MVVM сам это разруливает
@@ -13,6 +16,28 @@ namespace MvvmPresentation.Core
         private readonly IOrderQueries _orderQueries;
 
         private Task? _dataLoadingTask;
+
+
+        /****************************************************************************/
+
+        //We recommend that you not use public constructors to prevent creating the View Model without the ViewModelSource
+        protected CustomerOrdersViewModel()
+        { 
+        }
+
+        //This is a helper method that uses the ViewModelSource class for creating a LoginViewModel instance
+        public static CustomerOrdersViewModel Create()
+        {
+            return ViewModelSource.Create(() => new CustomerOrdersViewModel());
+        }
+
+        public static CustomerOrdersViewModel Create(IOrderQueries orderQueries)
+        {
+            var factory = ViewModelSource.Factory((IOrderQueries orderQueries) => new CustomerOrdersViewModel(orderQueries));
+            return factory(orderQueries);
+        }
+
+        /***************************************************************************/
 
         public CustomerOrdersViewModel(IOrderQueries orderQueries)
         {
@@ -39,6 +64,8 @@ namespace MvvmPresentation.Core
             _loadCustomersFilter();
         }
 
+
+        [Command(CanExecuteMethodName = "CanRefreshData", Name = "RefreshDataCommand", UseCommandManager = true)]
         public void RefreshData()
         {
             _loadCustomersFilter();
@@ -48,7 +75,40 @@ namespace MvvmPresentation.Core
             return !IsBusy;
         }
 
+
         private void _loadCustomersFilter()
+        {
+            CustomerNameViewModel _allCust = new(0, "Все");
+            List<CustomerNameViewModel> _newCustomerList = [_allCust];
+
+            IsBusy = true;
+            Task<IEnumerable<CustomerNameViewModel>> _task = _orderQueries.GetCustomers();
+            IEnumerable<CustomerNameViewModel> res = _task.Result;
+
+            _newCustomerList.AddRange(res);
+            Customers = _newCustomerList;
+
+            IsBusy = false;
+            SelectedCustomer = _allCust;
+            _dataLoadingTask = null;
+        }
+
+        private void _loadOrdersForCustomer(int customerId = default)
+        {
+            OrderList.Clear();
+
+            IsBusy = true;
+            Task<IEnumerable<CustomerOrderItemViewModel>> _task = _orderQueries.GetOrders(customerId);
+
+            _dataLoadingTask = _task;
+            _task.Result.ToList().ForEach(order => OrderList.Add(order));
+            CurrentOrder = OrderList.FirstOrDefault();
+            _dataLoadingTask = null;
+            IsBusy = false;
+        }
+
+
+        private void _loadCustomersFilter_original()
         {
             IsBusy = true;
             Task<IEnumerable<CustomerNameViewModel>> _task = _orderQueries.GetCustomers();
@@ -75,7 +135,7 @@ namespace MvvmPresentation.Core
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void _loadOrdersForCustomer(int customerId = default)
+        private void _loadOrdersForCustomer_original(int customerId = default)
         {
             IsBusy = true;
             Task<IEnumerable<CustomerOrderItemViewModel>> _task = _orderQueries.GetOrders(customerId);
