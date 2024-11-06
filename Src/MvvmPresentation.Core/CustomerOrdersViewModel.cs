@@ -76,7 +76,7 @@ namespace MvvmPresentation.Core
         }
 
 
-        private void _loadCustomersFilter()
+        private void _loadCustomersFilter1()
         {
             CustomerNameViewModel _allCust = new(0, "Все");
             List<CustomerNameViewModel> _newCustomerList = [_allCust];
@@ -93,7 +93,7 @@ namespace MvvmPresentation.Core
             _dataLoadingTask = null;
         }
 
-        private void _loadOrdersForCustomer(int customerId = default)
+        private void _loadOrdersForCustomer1(int customerId = default)
         {
             OrderList.Clear();
 
@@ -108,7 +108,7 @@ namespace MvvmPresentation.Core
         }
 
 
-        private void _loadCustomersFilter_original()
+        private void _loadCustomersFilter()
         {
             IsBusy = true;
             Task<IEnumerable<CustomerNameViewModel>> _task = _orderQueries.GetCustomers();
@@ -135,7 +135,7 @@ namespace MvvmPresentation.Core
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        private void _loadOrdersForCustomer_original(int customerId = default)
+        private void _loadOrdersForCustomer(int customerId = default)
         {
             IsBusy = true;
             Task<IEnumerable<CustomerOrderItemViewModel>> _task = _orderQueries.GetOrders(customerId);
