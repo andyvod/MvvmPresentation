@@ -50,7 +50,7 @@ namespace MvvmPresentation.App
             fluent.BindCommand(simpleButton1, vm => vm.RefreshData);
 
             //После загрузки формы, вызвать комманду загрузки данных в модели представления
-            Load += (s, e) => fluent.ViewModel.OnLoad();
+            Load += (s, e) => fluent.ViewModel.Load();
         }
     }
 }

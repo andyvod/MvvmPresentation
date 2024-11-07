@@ -12,6 +12,9 @@
         mc:Ignorable="d"
         Title="{Binding SelectedCustomer.FullName}" 
         Height="450" Width="800">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding OnLoadCommand}" />
+    </dxmvvm:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
