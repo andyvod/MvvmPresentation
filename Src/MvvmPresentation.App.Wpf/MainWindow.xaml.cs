@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MvvmPresentation.Core;
 
 namespace MvvmPresentation.App.Wpf
 {
@@ -16,9 +17,23 @@ namespace MvvmPresentation.App.Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        CustomerOrdersViewModel _viewModel;
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        public MainWindow(CustomerOrdersViewModel model) : this()
+        {
+            _viewModel = model;
+            this.DataContext = _viewModel;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _viewModel.OnLoad();
+        }
+
     }
 }

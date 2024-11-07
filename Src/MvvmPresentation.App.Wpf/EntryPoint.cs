@@ -1,5 +1,9 @@
+using DevExpress.Dialogs.Core.View;
+using DevExpress.Mvvm.POCO;
 using DevExpress.Utils.MVVM;
 using Microsoft.Extensions.DependencyInjection;
+using MvvmPresentation.App.Wpf;
+using MvvmPresentation.Core;
 using MvvmPresentation.Core.Services;
 using MvvmPresentation.Data.Data;
 using MvvmPresentation.Data.Services;
@@ -14,14 +18,30 @@ namespace CSharp
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
+        //public static void Main()
+        //{
+        //    _buildServiceProvider();
+        //    _initDataBaseIfNeed();
+        //    _addMVVMSupport();
+        //    var application = new System.Windows.Application();
+        //    application.Run(new MvvmPresentation.App.Wpf.MainWindow());
+        //}
+
         public static void Main()
         {
             _buildServiceProvider();
             _initDataBaseIfNeed();
             _addMVVMSupport();
+
+            IOrderQueries orderQueries = _rootServiceProvider.GetService<IOrderQueries>();
+            CustomerOrdersViewModel viewModel = CustomerOrdersViewModel.Create(orderQueries);
+            MainWindow mainWindow = new MainWindow(viewModel);
+            //viewModel.RefreshData();
+
             var application = new System.Windows.Application();
-            application.Run(new MvvmPresentation.App.Wpf.MainWindow());
+            application.Run(mainWindow);
         }
+
 
         /// <summary>
         /// ѕервична€ инициализаци€ данных дл€ приложени€. 
@@ -53,22 +73,22 @@ namespace CSharp
         private static void _addMVVMSupport()
         {
             //See: https://docs.devexpress.com/WindowsForms/119492/build-an-application/winforms-mvvm/concepts/viewmodel-management
-            MVVMContextCompositionRoot.ViewModelCreate += (s, e) =>
-            {
+            //MVVMContextCompositionRoot.ViewModelCreate += (s, e) =>
+            //{
 
-                using var scope = _rootServiceProvider!.CreateScope();
+            //    using var scope = _rootServiceProvider!.CreateScope();
 
-                var constructors = e.ViewModelType.GetConstructors();
+            //    var constructors = e.ViewModelType.GetConstructors();
 
-                var selectedConstructor = constructors.OrderByDescending(c => c.GetParameters().Length).First();
+            //    var selectedConstructor = constructors.OrderByDescending(c => c.GetParameters().Length).First();
 
-                var parameters = selectedConstructor.GetParameters().Select(p => scope.ServiceProvider.GetRequiredService(p.ParameterType)).ToArray();
+            //    var parameters = selectedConstructor.GetParameters().Select(p => scope.ServiceProvider.GetRequiredService(p.ParameterType)).ToArray();
 
-                var viewModel = e.ViewModelSource.Create(e.ViewModelType, parameters);
+            //    var viewModel = e.ViewModelSource.Create(e.ViewModelType, parameters);
 
-                e.ViewModel = viewModel;
-                return;
-            };
+            //    e.ViewModel = viewModel;
+            //    return;
+            //};
         }
     }
 }
