@@ -72,7 +72,7 @@ namespace MvvmPresentation.Core
                 //IsBusy = false;
                 SelectedCustomer = _allCust;
                 _dataLoadingTask = null;                
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+            });
         }
 
         private void _loadOrdersForCustomer(int customerId = default)
@@ -97,7 +97,7 @@ namespace MvvmPresentation.Core
                 CurrentOrder = OrderList.FirstOrDefault();
                 _dataLoadingTask = null;
                 IsBusy = false;
-            }, TaskScheduler.FromCurrentSynchronizationContext());
+            });
         }
 
         protected void OnSelectedCustomerChanged() {

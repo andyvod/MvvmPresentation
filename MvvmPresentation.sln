@@ -13,7 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D4415438
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmPresentation.Tests", "_tests\MvvmPresentation.Tests\MvvmPresentation.Tests.csproj", "{E3B26E6E-2482-4437-956A-15AF5DF96257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmPresentation.App.Wpf", "Src\MvvmPresentation.App.Wpf\MvvmPresentation.App.Wpf.csproj", "{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmPresentation.App.Wpf", "Src\MvvmPresentation.App.Wpf\MvvmPresentation.App.Wpf.csproj", "{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmPresentation.App.Console", "Src\MvvmPresentation.App.Console\MvvmPresentation.App.Console.csproj", "{4FCCE5D7-149C-4559-80D4-B3532AC24F02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FCCE5D7-149C-4559-80D4-B3532AC24F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FCCE5D7-149C-4559-80D4-B3532AC24F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FCCE5D7-149C-4559-80D4-B3532AC24F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FCCE5D7-149C-4559-80D4-B3532AC24F02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
