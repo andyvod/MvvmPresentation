@@ -49,8 +49,8 @@ namespace MvvmPresentation.App
             //Привязка кнопки к методу вью модели 
             fluent.BindCommand(simpleButton1, vm => vm.RefreshData);
 
-            //После загрузки формы, вызвать комманду загрузки данных в модели представления
-            Load += (s, e) => fluent.ViewModel.Load();
+            //После загрузки формы, вызвать команду загрузки данных в модели представления
+            Load += (s, e) => fluent.ViewModel.OnLoad();
         }
     }
 }
