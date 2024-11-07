@@ -1,7 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.POCO;
 using MvvmPresentation.Core.Services;
-using System.Collections.ObjectModel;
 
 namespace MvvmPresentation.Core
 {
@@ -12,14 +11,12 @@ namespace MvvmPresentation.Core
 
         private readonly IOrderQueries _orderQueries;
 
-        private Task? _dataLoadingTask;
-
         public CustomerOrdersViewModel(IOrderQueries orderQueries)
         {
             _orderQueries = orderQueries;
         }
 
-        public virtual ObservableCollection<CustomerOrderItemViewModel> OrderList { get; protected set; } = [];
+        public virtual List<CustomerOrderItemViewModel> OrderList { get; protected set; } = [];
 
         public virtual CustomerOrderItemViewModel? CurrentOrder { get; set; }
 
@@ -35,77 +32,74 @@ namespace MvvmPresentation.Core
             this.RaiseCanExecuteChanged(vm => vm.RefreshData());
         }
 
-        public void OnLoad() {
-            _loadCustomersFilter();
-        }
-
-        public void RefreshData()
+        public async Task OnLoad()
         {
-            _loadCustomersFilter();
+            await _loadCustomersFilterAsync();
         }
 
-        public bool CanRefreshData() { 
+        public async Task RefreshData()
+        {
+            await _loadCustomersFilterAsync();
+        }
+
+        public bool CanRefreshData()
+        {
             return !IsBusy;
         }
 
-        private void _loadCustomersFilter()
+        private async Task _loadCustomersFilterAsync()
         {
             IsBusy = true;
-            Task<IEnumerable<CustomerNameViewModel>> _task = _orderQueries.GetCustomers();
+            CustomerNameViewModel _allCust = new(0, "Все");
+            List<CustomerNameViewModel> _newCustomerList = [_allCust];
 
-            _dataLoadingTask = _task;
-
-            _task.ContinueWith(task => {
-                if (task.IsFaulted) { 
-                    var ex = task.Exception!.InnerExceptions.First();
-                    _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
-                    _dataLoadingTask = null;
-                    IsBusy = false;
-                    return;
-                }
-                CustomerNameViewModel _allCust = new(0, "Все");
-                List<CustomerNameViewModel> _newCustomerList = [_allCust];
-
-                _newCustomerList.AddRange(_task.Result);
+            try
+            {
+                var loadedCustomers = await _orderQueries.GetCustomers();
+                _newCustomerList.AddRange(loadedCustomers);
                 Customers = _newCustomerList;
 
-                //IsBusy = false;
                 SelectedCustomer = _allCust;
-                _dataLoadingTask = null;                
-            });
+            }
+            catch (Exception ex)
+            {
+                _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
+                IsBusy = false;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
-        private void _loadOrdersForCustomer(int customerId = default)
+        private async Task _loadOrdersForCustomerAsync(int customerId = default)
         {
             IsBusy = true;
-            Task<IEnumerable<CustomerOrderItemViewModel>> _task = _orderQueries.GetOrders(customerId);
+            try
+            {
+                var newOrders = await _orderQueries.GetOrders(customerId);
 
-            _dataLoadingTask = _task;
-
-            _task.ContinueWith(task => {
-                if (task.IsFaulted)
-                {
-                    var ex = task.Exception!.InnerExceptions.First();
-                    _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
-                    _dataLoadingTask = null;
-                    IsBusy = false;
-                    return;
-                }
-                
-                OrderList.Clear();
-                task.Result.ToList().ForEach(order => OrderList.Add(order));
-                CurrentOrder = OrderList.FirstOrDefault();
-                _dataLoadingTask = null;
+                OrderList = newOrders.ToList();
+                CurrentOrder = newOrders.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _messageBoxService.ShowMessage(ex.Message, "Error", MessageButton.OK, MessageIcon.Error);
+            }
+            finally
+            {
                 IsBusy = false;
-            });
+            }
         }
 
-        protected void OnSelectedCustomerChanged() {
-            if (SelectedCustomer == null) {
+        protected async void OnSelectedCustomerChanged()
+        {
+            if (SelectedCustomer == null)
+            {
                 return;
             }
 
-            _loadOrdersForCustomer(SelectedCustomer.Id);
+            await _loadOrdersForCustomerAsync(SelectedCustomer.Id);
         }
     }
 }
