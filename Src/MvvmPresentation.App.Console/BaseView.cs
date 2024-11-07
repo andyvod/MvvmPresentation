@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using ConsoleTables;
+using System.ComponentModel;
 
 namespace MvvmPresentation.App.Console
 {
@@ -57,7 +58,10 @@ namespace MvvmPresentation.App.Console
 
         protected void Display<TRow>(List<TRow> data) where TRow : class
         {
-            System.Console.WriteLine($"Печать грида: {typeof(TRow)}");
+            ConsoleTable
+                .From(data)
+                .Configure(o => o.NumberAlignment = Alignment.Right)
+                .Write(Format.Alternative);
         }
 
         protected void OnCommandEntered(char command)

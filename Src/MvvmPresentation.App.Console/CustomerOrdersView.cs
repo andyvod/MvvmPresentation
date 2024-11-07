@@ -30,18 +30,24 @@ namespace MvvmPresentation.App.Console
         {
             SetTrigger(nameof(CustomerOrdersViewModel.OrderList), ShowOrderList);
 
+            SetTrigger(nameof(CustomerOrdersViewModel.IsBusy), () => {
+                if(((CustomerOrdersViewModel)ViewModelINotify).IsBusy == true)
+                {
+                    Display("Идет загрузка данных...");
+                }
+            });
+
             CommandEvent += CustomerOrdersView_CommandEvent;
 
-            //ViewLoaded += (s, e) => ((CustomerOrdersViewModel)ViewModelINotify).OnLoad();
             ViewLoaded += CustomerOrdersView_ViewLoaded;
         }
 
         private void CustomerOrdersView_ViewLoaded(object? sender, EventArgs e)
         {
-            ((CustomerOrdersViewModel)ViewModelINotify).OnLoad();
+            ((CustomerOrdersViewModel)ViewModelINotify).OnLoad().Wait();
             while (true)
             {
-                System.Console.Write("command:");
+                //System.Console.Write("command:");
                 var key = System.Console.ReadKey();
 
                 if (key.KeyChar == EXIT_COMMAND)
@@ -59,10 +65,11 @@ namespace MvvmPresentation.App.Console
             switch (e.Command)
             {
                 case RELOAD_COMMAND:
-                    ((CustomerOrdersViewModel)ViewModelINotify).RefreshData();
+                    ((CustomerOrdersViewModel)ViewModelINotify).RefreshData().Wait();
                     break;
                 case HELP_COMMAND:
                     DisplayHelp();
+                    System.Console.Write("command:");
                     break;
                 case CUSTOMERS_COMMAND:
                     _selectCustomer();
@@ -102,7 +109,7 @@ namespace MvvmPresentation.App.Console
                 }
 
                 viewModel.SelectedCustomer = selectedCustomerInView;
-
+                break;
             }
         }
 
@@ -111,6 +118,8 @@ namespace MvvmPresentation.App.Console
             var newOrders = ((CustomerOrdersViewModel)ViewModelINotify).OrderList.ToList();
 
             Display(newOrders);
+
+            System.Console.Write("command:");
         }
     }
 }
