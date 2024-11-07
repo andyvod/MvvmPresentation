@@ -32,6 +32,8 @@ namespace MvvmPresentation.App
             //привязка грида к коллекции заказов в модели преставления
             fluent.SetBinding(gridControl1, g => g.DataSource, vm => vm.OrderList);
 
+            fluent.SetBinding(this, f => f.Text, vm => vm.SelectedCustomer, c => c?.FullName ?? this.Text);
+
             //Привязка выбранной позиции грида к свойству CurrentOrder модели представления
             fluent.WithEvent<ColumnView, FocusedRowObjectChangedEventArgs>(gridView1, nameof(gridView1.FocusedRowObjectChanged))
                 .SetBinding(vm => vm.CurrentOrder,
