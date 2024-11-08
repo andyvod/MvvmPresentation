@@ -68,7 +68,7 @@ namespace MvvmPresentation.Core
             }
             finally
             {
-                IsBusy = false;
+                //IsBusy = false;
             }
         }
 
