@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmPresentation.Tests", "_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmPresentation.App.Wpf", "Src\MvvmPresentation.App.Wpf\MvvmPresentation.App.Wpf.csproj", "{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvvmPresentation.App.Console", "Src\MvvmPresentation.App.Console\MvvmPresentation.App.Console.csproj", "{4FCCE5D7-149C-4559-80D4-B3532AC24F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvvmPresentation.App.Console", "Src\MvvmPresentation.App.Console\MvvmPresentation.App.Console.csproj", "{4FCCE5D7-149C-4559-80D4-B3532AC24F02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{7E90811C-CFC9-4AF0-ACCF-D0ADAA553061}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,7 +54,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{F496B5F2-A06D-4A3F-BEA1-4FEB81DF5D1D} = {7E90811C-CFC9-4AF0-ACCF-D0ADAA553061}
 		{E3B26E6E-2482-4437-956A-15AF5DF96257} = {D4415438-744A-423E-B33D-4B8F68B8AEB6}
+		{75D9F084-EB4B-44D5-8DA4-F9D558B0F8F5} = {7E90811C-CFC9-4AF0-ACCF-D0ADAA553061}
+		{4FCCE5D7-149C-4559-80D4-B3532AC24F02} = {7E90811C-CFC9-4AF0-ACCF-D0ADAA553061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CDB1B0C0-97B4-4BCE-AB31-E9A77E00F652}
